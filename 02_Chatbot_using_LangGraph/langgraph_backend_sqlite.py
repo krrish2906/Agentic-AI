@@ -23,6 +23,7 @@ def chat_node(state: ChatState):
 # Get the directory of the current script
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 db_path = os.path.join(BASE_DIR, "chatbot.db")
+os.environ["LANGSMITH_PROJECT"] = "chatbot"
 
 # Connect to SQLite database
 conn = sqlite3.connect(db_path, check_same_thread=False)
@@ -30,7 +31,6 @@ checkpointer = SqliteSaver(conn=conn)
 
 # Create the graph
 graph = StateGraph(ChatState)
-
 
 # Add nodes
 graph.add_node("chat_node", chat_node)
