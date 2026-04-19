@@ -18,3 +18,5 @@ myenv/
 Thumbs.db
 .DS_Store
 .vscode/
+
+.indices/
